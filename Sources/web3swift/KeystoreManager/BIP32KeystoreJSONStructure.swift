@@ -6,7 +6,7 @@
 
 import Foundation
 
-public struct KeystoreParamsBIP32: Decodable, Encodable {
+public struct KeystoreParamsBIP32: Identifiable, Decodable, Encodable {
     public private(set) var id: String
     
     var crypto: CryptoParamsV3

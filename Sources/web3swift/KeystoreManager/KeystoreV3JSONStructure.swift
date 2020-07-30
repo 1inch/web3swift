@@ -30,7 +30,7 @@ public struct CryptoParamsV3: Decodable, Encodable {
     var version: String?
 }
 
-public struct KeystoreParamsV3: Decodable, Encodable {
+public struct KeystoreParamsV3: Identifiable, Decodable, Encodable {
     public private(set) var id: String
     
     var address: String?
