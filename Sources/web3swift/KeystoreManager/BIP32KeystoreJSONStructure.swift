@@ -7,8 +7,9 @@
 import Foundation
 
 public struct KeystoreParamsBIP32: Decodable, Encodable {
+    public private(set) var id: String
+    
     var crypto: CryptoParamsV3
-    var id: String?
     var version: Int = 32
     var isHDWallet: Bool
     var pathToAddress: [String:String]

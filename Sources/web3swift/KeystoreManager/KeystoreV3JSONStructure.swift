@@ -31,9 +31,10 @@ public struct CryptoParamsV3: Decodable, Encodable {
 }
 
 public struct KeystoreParamsV3: Decodable, Encodable {
+    public private(set) var id: String
+    
     var address: String?
     var crypto: CryptoParamsV3
-    var id: String?
     var version: Int
     
     public init(address ad: String?, crypto cr: CryptoParamsV3, id i: String, version ver: Int) {
