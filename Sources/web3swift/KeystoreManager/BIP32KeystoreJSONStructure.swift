@@ -6,13 +6,18 @@
 
 import Foundation
 
+public struct PathAddressPair: Codable {
+    let path: String
+    let address: String
+}
+
 public struct KeystoreParamsBIP32: Identifiable, Decodable, Encodable {
     public private(set) var id: String
     
     var crypto: CryptoParamsV3
     var version: Int = 32
     var isHDWallet: Bool
-    var pathToAddress: [String:String]
+    var pathAddressPairs: [PathAddressPair]
     var rootPath: String?
     
     public init(crypto cr: CryptoParamsV3, id i: String, version ver: Int, rootPath: String? = nil) {
@@ -20,7 +25,7 @@ public struct KeystoreParamsBIP32: Identifiable, Decodable, Encodable {
         id = i
         version = ver
         isHDWallet = true
-        pathToAddress = [String:String]()
+        pathAddressPairs = [PathAddressPair]()
         self.rootPath = rootPath
     }
     
