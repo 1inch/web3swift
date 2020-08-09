@@ -156,6 +156,11 @@ class web3swift_Keystores_tests: XCTestCase {
         print(recreatedStore!.addresses![0].address)
         print(recreatedStore!.addresses![1].address)
         // This will fail. It wont fail if use scrypt from pod 'scrypt', '2.0', not from CryptoSwift
+        let add0 = keystore?.addresses![0]
+        let add00 = recreatedStore?.addresses![1]
+        let d0 = add0?.addressData.toHexString()
+        let d00 = add00?.addressData.toHexString()
+        XCTAssert(d0 == d00)
         XCTAssert(keystore?.addresses![0] == recreatedStore?.addresses![1])
         XCTAssert(keystore?.addresses![1] == recreatedStore?.addresses![0])
     }
