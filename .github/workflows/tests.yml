@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  push:
+    branches: [ new ]
+  pull_request:
+    branches: [ new ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - uses: actions/cache@v1
+      id: carthage-cache
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+    - name: Carthage
+      if: steps.carthage-cache.outputs.cache-hit != 'true'
+      run: |
+        carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+    
+    - name: Run Tests
+      run: set -o pipefail && xcodebuild clean build test -project web3swift.xcodeproj -scheme web3swift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11' ONLY_ACTIVE_ARCH=NO | xcpretty -c
