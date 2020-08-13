@@ -113,7 +113,7 @@ public class ST20: IST20 {
             self._decimals = UInt8(decimals)
             
             self._hasReadProperties = true
-            }.wait() as Void
+            }.wait()
     }
     
     func tokenDetails() throws -> [UInt32] {

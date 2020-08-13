@@ -9,7 +9,7 @@ import BigInt
 
 extension Data {
     func setLengthLeft(_ toBytes: UInt64, isNegative:Bool = false ) -> Data? {
-        let existingLength = UInt64(self.count)
+        let existingLength: UInt64 = UInt64(self.count)
         if (existingLength == toBytes) {
             return Data(self)
         } else if (existingLength > toBytes) {
@@ -59,7 +59,7 @@ extension BigInt {
 extension BigUInt {
     func abiEncode(bits: UInt64) -> Data? {
         let data = self.serialize()
-        let paddedLength = UInt64(ceil((Double(bits)/8.0)))
+        let paddedLength: UInt64 = UInt64(ceil((Double(bits)/8.0)))
         let padded = data.setLengthLeft(paddedLength)
         return padded
     }

@@ -77,7 +77,7 @@ public struct IBAN {
         for ch in IBAN {
             guard let dataPoint = String(ch).data(using: .ascii) else {return ""}
             guard dataPoint.count == 1 else {return ""}
-            let code = Int(dataPoint[0])
+            let code: Int = Int(dataPoint[0])
             if code >= 65 && code <= 90 {
                 arrayOfInts.append(code - 65 + 10)
             } else {

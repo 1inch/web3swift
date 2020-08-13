@@ -91,7 +91,8 @@ extension Web3 {
             guard let data = string.data(using: .utf8, allowLossyConversion: false) else {return CIImage()}
             let filter = CIFilter(name: "CIQRCodeGenerator", parameters: ["inputMessage" : data, "inputCorrectionLevel":"L"])
             guard var image = filter?.outputImage else {return CIImage()}
-            let transformation: CGAffineTransform = CGAffineTransform(scaleX: CGFloat(scale), y: CGFloat(scale))
+            let scaleValue: CGFloat = CGFloat(scale)
+            let transformation = CGAffineTransform(scaleX: scaleValue, y: scaleValue)
             image = image.transformed(by: transformation)
             return image
         }
