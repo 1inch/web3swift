@@ -55,6 +55,7 @@
 		13C3392821B6C68900F33F5E /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C3388E21B6C2DD00F33F5E /* secp256k1.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2A647CB624E520350083A63E /* BIP39+MnemonicsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A647CB524E520350083A63E /* BIP39+MnemonicsUtils.swift */; };
 		2A647CB824E5320D0083A63E /* BIP39Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A647CB724E5320D0083A63E /* BIP39Validator.swift */; };
+		2A647CBA24E53AF20083A63E /* web3swift_BIP39_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A647CB924E53AF20083A63E /* web3swift_BIP39_Tests.swift */; };
 		2A80F3DF24DE9C9D003E3B1E /* PathAddressStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A80F3DE24DE9C9D003E3B1E /* PathAddressStorage.swift */; };
 		3A7EA35E2280EA9A005120C2 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EA35D2280EA9A005120C2 /* Encodable+Extensions.swift */; };
 		3A7EA3602280EB27005120C2 /* Decodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EA35F2280EB27005120C2 /* Decodable+Extensions.swift */; };
@@ -255,6 +256,7 @@
 		13CE02B421FC849400CE7148 /* Web3swift.pod.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Web3swift.pod.podspec; sourceTree = "<group>"; };
 		2A647CB524E520350083A63E /* BIP39+MnemonicsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BIP39+MnemonicsUtils.swift"; sourceTree = "<group>"; };
 		2A647CB724E5320D0083A63E /* BIP39Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP39Validator.swift; sourceTree = "<group>"; };
+		2A647CB924E53AF20083A63E /* web3swift_BIP39_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = web3swift_BIP39_Tests.swift; sourceTree = "<group>"; };
 		2A80F3DE24DE9C9D003E3B1E /* PathAddressStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathAddressStorage.swift; sourceTree = "<group>"; };
 		3A7EA35D2280EA9A005120C2 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		3A7EA35F2280EB27005120C2 /* Decodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Extensions.swift"; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				3AA816202276E48400F5DB52 /* web3swift_transactions_Tests.swift */,
 				3AA816162276E48300F5DB52 /* web3swift_User_cases.swift */,
 				3AA816232276E48400F5DB52 /* web3swift_Websockets_Tests.swift */,
+				2A647CB924E53AF20083A63E /* web3swift_BIP39_Tests.swift */,
 			);
 			path = web3swiftTests;
 			sourceTree = "<group>";
@@ -1331,6 +1334,7 @@
 				3AA816282276E48400F5DB52 /* web3swift_ERC20_Tests.swift in Sources */,
 				3AA8162A2276E48400F5DB52 /* web3swift_Tests.swift in Sources */,
 				3AA816312276E48400F5DB52 /* web3swift_promises_Tests.swift in Sources */,
+				2A647CBA24E53AF20083A63E /* web3swift_BIP39_Tests.swift in Sources */,
 				3AA816262276E48400F5DB52 /* web3swift_RLP_Tests.swift in Sources */,
 				3AA816302276E48400F5DB52 /* web3swift_keystores_Tests.swift in Sources */,
 				3AA8162D2276E48400F5DB52 /* web3swift_numberFormattingUtil_Tests.swift in Sources */,
