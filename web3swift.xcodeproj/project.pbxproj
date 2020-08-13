@@ -53,6 +53,8 @@
 		13C3392521B6C62400F33F5E /* secp256k1_ec_mult_static_context.h in Headers */ = {isa = PBXBuildFile; fileRef = 13C338F621B6C62400F33F5E /* secp256k1_ec_mult_static_context.h */; };
 		13C3392621B6C62400F33F5E /* scratch.h in Headers */ = {isa = PBXBuildFile; fileRef = 13C338F721B6C62400F33F5E /* scratch.h */; };
 		13C3392821B6C68900F33F5E /* secp256k1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C3388E21B6C2DD00F33F5E /* secp256k1.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2A647CB624E520350083A63E /* BIP39+MnemonicsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A647CB524E520350083A63E /* BIP39+MnemonicsUtils.swift */; };
+		2A647CB824E5320D0083A63E /* BIP39Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A647CB724E5320D0083A63E /* BIP39Validator.swift */; };
 		2A80F3DF24DE9C9D003E3B1E /* PathAddressStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A80F3DE24DE9C9D003E3B1E /* PathAddressStorage.swift */; };
 		3A7EA35E2280EA9A005120C2 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EA35D2280EA9A005120C2 /* Encodable+Extensions.swift */; };
 		3A7EA3602280EB27005120C2 /* Decodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EA35F2280EB27005120C2 /* Decodable+Extensions.swift */; };
@@ -251,6 +253,8 @@
 		13CE02B021FC846800CE7148 /* RELEASE_GUIDE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_GUIDE.md; sourceTree = "<group>"; };
 		13CE02B121FC846900CE7148 /* BUILD_GUIDE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = BUILD_GUIDE.md; sourceTree = "<group>"; };
 		13CE02B421FC849400CE7148 /* Web3swift.pod.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Web3swift.pod.podspec; sourceTree = "<group>"; };
+		2A647CB524E520350083A63E /* BIP39+MnemonicsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BIP39+MnemonicsUtils.swift"; sourceTree = "<group>"; };
+		2A647CB724E5320D0083A63E /* BIP39Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP39Validator.swift; sourceTree = "<group>"; };
 		2A80F3DE24DE9C9D003E3B1E /* PathAddressStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathAddressStorage.swift; sourceTree = "<group>"; };
 		3A7EA35D2280EA9A005120C2 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		3A7EA35F2280EB27005120C2 /* Decodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Extensions.swift"; sourceTree = "<group>"; };
@@ -657,6 +661,8 @@
 				3AA8153A2276E44100F5DB52 /* AbstractKeystore.swift */,
 				3AA8153B2276E44100F5DB52 /* KeystoreV3JSONStructure.swift */,
 				2A80F3DE24DE9C9D003E3B1E /* PathAddressStorage.swift */,
+				2A647CB524E520350083A63E /* BIP39+MnemonicsUtils.swift */,
+				2A647CB724E5320D0083A63E /* BIP39Validator.swift */,
 			);
 			path = KeystoreManager;
 			sourceTree = "<group>";
@@ -1194,6 +1200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A647CB624E520350083A63E /* BIP39+MnemonicsUtils.swift in Sources */,
 				3AA815CF2276E44100F5DB52 /* Web3+Eth+Websocket.swift in Sources */,
 				3A7EA35E2280EA9A005120C2 /* Encodable+Extensions.swift in Sources */,
 				3AA815D22276E44100F5DB52 /* Web3+JSONRPC.swift in Sources */,
@@ -1211,6 +1218,7 @@
 				3AA815D32276E44100F5DB52 /* Web3+Instance.swift in Sources */,
 				3AA816062276E44100F5DB52 /* Web3+ST20.swift in Sources */,
 				3AA815FA2276E44100F5DB52 /* Promise+Web3+Eth+GetAccounts.swift in Sources */,
+				2A647CB824E5320D0083A63E /* BIP39Validator.swift in Sources */,
 				3AA815E72276E44100F5DB52 /* Array+Extension.swift in Sources */,
 				3AEF4ABF22C0B6BE00AC7929 /* Web3+Constants.swift in Sources */,
 				3AA815DD2276E44100F5DB52 /* Web3+Options.swift in Sources */,

@@ -7,7 +7,7 @@
 import Foundation
 import CryptoSwift
 
-public enum BIP39Language {
+public enum BIP39Language: CaseIterable {
     case english
     case chinese_simplified
     case chinese_traditional
@@ -112,11 +112,14 @@ public class BIP39 {
     }
     
     static public func mnemonicsToEntropy(_ mnemonics: String, language: BIP39Language = BIP39Language.english) -> Data? {
-        let wordList = mnemonics.components(separatedBy: " ")
+        let wordList = mnemonics.components(separatedBy: .whitespaces)
+        return mnemonicsToEntropy(wordList, language: language)
+    }
+    
+    static func mnemonicsToEntropy(_ wordList: [String], language: BIP39Language = BIP39Language.english) -> Data? {
         guard wordList.count >= 12 && wordList.count.isMultiple(of: 4) else {return nil}
         var bitString = ""
         for word in wordList {
-//            let idx = language.words.index(of: word)
             let idx = language.words.firstIndex(of: word)
             if (idx == nil) {
                 return nil
