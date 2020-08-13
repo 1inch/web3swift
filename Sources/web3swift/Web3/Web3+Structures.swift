@@ -546,7 +546,7 @@ public struct Block:Decodable {
         
         let timestampString = try container.decode(String.self, forKey: .timestamp).stripHexPrefix()
         guard let timestampInt = UInt64(timestampString, radix: 16) else {throw Web3Error.dataError}
-        let timestamp = Date(timeIntervalSince1970: TimeInterval(timestampInt))
+        let timestamp: Date = Date(timeIntervalSince1970: TimeInterval(timestampInt))
         self.timestamp = timestamp
         
         let transactions = try container.decode([TransactionInBlock].self, forKey: .transactions)

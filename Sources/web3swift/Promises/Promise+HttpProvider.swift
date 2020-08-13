@@ -35,7 +35,7 @@ extension Web3HttpProvider {
                         return
                     }
                     rp.resolver.fulfill(data!)
-                }
+                } as URLSessionTask
                 task?.resume()
             } catch {
                 rp.resolver.reject(error)

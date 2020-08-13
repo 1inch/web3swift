@@ -171,7 +171,7 @@ public struct JSONRPCresponse: Decodable{
         let slf = T.self
         if slf == BigUInt.self {
             guard let string = self.result as? String else {return nil}
-            guard let value = BigUInt(string.stripHexPrefix(), radix: 16) else {return nil}
+            guard let value: BigUInt = BigUInt(string.stripHexPrefix(), radix: 16) else {return nil}
             return value as? T
         } else if slf == BigInt.self {
             guard let string = self.result as? String else {return nil}

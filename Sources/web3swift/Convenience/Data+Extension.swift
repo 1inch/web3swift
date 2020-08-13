@@ -9,19 +9,13 @@ import Foundation
 public extension Data {
     
     init<T>(fromArray values: [T]) {
-        var values = values
-        self.init(buffer: UnsafeBufferPointer(start: &values, count: values.count))
+        self = values.withUnsafeBytes { Data($0) }
     }
-    
-    func toArray<T>(type: T.Type) throws -> [T] {
-        return try self.withUnsafeBytes { (body: UnsafeRawBufferPointer) in
-            if let bodyAddress = body.baseAddress, body.count > 0 {
-                let pointer = bodyAddress.assumingMemoryBound(to: T.self)
-                return [T](UnsafeBufferPointer(start: pointer, count: self.count/MemoryLayout<T>.stride))
-            } else {
-                throw Web3Error.dataError
-            }
-        }
+
+    func toArray<T>(type: T.Type) -> [T] where T: ExpressibleByIntegerLiteral {
+        var array = Array<T>(repeating: 0, count: self.count/MemoryLayout<T>.stride)
+        _ = array.withUnsafeMutableBytes { copyBytes(to: $0) }
+        return array
     }
     
     //    func toArray<T>(type: T.Type) throws -> [T] {
