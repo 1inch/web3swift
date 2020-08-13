@@ -6,6 +6,27 @@
 
 import Foundation
 
+public extension String {
+    func hasHexPrefix() -> Bool {
+        return self.hasPrefix("0x")
+    }
+    
+    func stripHexPrefix() -> String {
+        if self.hasPrefix("0x") {
+            let indexStart = self.index(self.startIndex, offsetBy: 2)
+            return String(self[indexStart...])
+        }
+        return self
+    }
+    
+    func addHexPrefix() -> String {
+        if !self.hasPrefix("0x") {
+            return "0x" + self
+        }
+        return self
+    }
+}
+
 extension String {
     var fullRange: Range<Index> {
         return startIndex..<endIndex
@@ -65,26 +86,7 @@ extension String {
         let byteArray = padded.split(intoChunksOf: 8).map { UInt8(strtoul($0, nil, 2)) }
         return Data(byteArray)
     }
-    
-    func hasHexPrefix() -> Bool {
-        return self.hasPrefix("0x")
-    }
-    
-    func stripHexPrefix() -> String {
-        if self.hasPrefix("0x") {
-            let indexStart = self.index(self.startIndex, offsetBy: 2)
-            return String(self[indexStart...])
-        }
-        return self
-    }
-    
-    func addHexPrefix() -> String {
-        if !self.hasPrefix("0x") {
-            return "0x" + self
-        }
-        return self
-    }
-    
+        
     func stripLeadingZeroes() -> String? {
         let hex = self.addHexPrefix()
         guard let matcher = try? NSRegularExpression(pattern: "^(?<prefix>0x)0*(?<end>[0-9a-fA-F]*)$", options: NSRegularExpression.Options.dotMatchesLineSeparators) else {return nil}
