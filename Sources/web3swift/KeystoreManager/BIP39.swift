@@ -116,7 +116,7 @@ public class BIP39 {
         return mnemonicsToEntropy(wordList, language: language)
     }
     
-    static func mnemonicsToEntropy(_ wordList: [String], language: BIP39Language = BIP39Language.english) -> Data? {
+    static public func mnemonicsToEntropy(_ wordList: [String], language: BIP39Language = BIP39Language.english) -> Data? {
         guard wordList.count >= 12 && wordList.count.isMultiple(of: 4) else {return nil}
         var bitString = ""
         for word in wordList {
