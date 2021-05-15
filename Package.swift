@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "W3SKeystore", targets: ["W3SKeystore"]),
     ],
     dependencies: [
-        .package(name: "Web3", url: "https://github.com/Boilertalk/Web3.swift.git", from: "0.5.0"),
+        .package(name: "Web3", url: "https://github.com/1inch/Web3.swift.git", from: "0.6.0"),
     ],
     targets: [
         .target(
