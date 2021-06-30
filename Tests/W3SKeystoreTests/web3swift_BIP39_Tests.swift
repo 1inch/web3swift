@@ -38,4 +38,37 @@ class web3swift_BIP39_Tests: XCTestCase {
         let joined = BIP39.wordsToMnemonic(words)
         XCTAssert(joined == mnemonic)
     }
+
+    func testWordsCount() throws {
+        let englishWords = BIP39Language.english.words
+        let simplifiedchineseWords = BIP39Language.chinese_simplified.words
+        let traditionalchineseWords = BIP39Language.chinese_traditional.words
+        let japaneseWords = BIP39Language.japanese.words
+        let koreanWords = BIP39Language.korean.words
+        let frenchWords = BIP39Language.french.words
+        let italianWords = BIP39Language.italian.words
+        let spanishWords = BIP39Language.spanish.words
+
+        let allWords = [
+            englishWords,
+            simplifiedchineseWords,
+            traditionalchineseWords,
+            japaneseWords,
+            koreanWords,
+            frenchWords,
+            italianWords,
+            spanishWords,
+        ]
+
+        let count = englishWords.count
+        XCTAssertEqual(count, 2048)
+
+        for wordsList in allWords {
+            XCTAssertEqual(count, wordsList.count)
+        }
+    }
 }
+
+
+
+
