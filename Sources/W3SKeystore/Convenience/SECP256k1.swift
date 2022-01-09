@@ -170,6 +170,54 @@ enum SECP256K1 {
         return nil
     }
     
+    /// Recover a public key from a message.
+    /// - Parameter message: 32-byte message that was signed.
+    /// - Parameter signature: 64-byte signature.
+    /// - Returns: 33-byte compressed public key.
+    public static func recover(message: Data, signature: Data) -> Data? {
+        if signature.count < 65 {
+            // Invalid signature
+            return nil
+        }
+        
+        let sig = UnsafeMutablePointer<secp256k1_ecdsa_recoverable_signature>.allocate(capacity: 1)
+        defer { sig.deallocate() }
+        
+        var recid = Int32(signature[64]) // v
+        if recid >= 27 {
+            recid -= 27
+        }
+        
+        let parseSuccess = signature.withUnsafeBytes { (signatureBytes) -> Bool in
+            if let _bytes = signatureBytes.baseAddress, signatureBytes.count > 0 {
+                let bytes = _bytes.assumingMemoryBound(to: UInt8.self)
+                
+                return secp256k1_ecdsa_recoverable_signature_parse_compact(context!, sig, bytes, recid) == 1
+            }
+            return false
+        }
+        
+        guard parseSuccess else {
+            return nil
+        }
+        
+        let pubkey = UnsafeMutablePointer<secp256k1_pubkey>.allocate(capacity: 1)
+        defer { pubkey.deallocate() }
+        
+        let recoverSuccess = message.withUnsafeBytes { (messageBytes) -> Bool in
+            if let _bytes = messageBytes.baseAddress, messageBytes.count > 0 {
+                let bytes = _bytes.assumingMemoryBound(to: UInt8.self)
+                return secp256k1_ecdsa_recover(context!, pubkey, sig, bytes) == 1
+            }
+            return false
+        }
+        
+        guard recoverSuccess else {
+            return nil
+        }
+        return serializePublicKey(publicKey: &pubkey.pointee, compressed: true)
+    }
+    
     internal static func constantTimeComparison(_ lhs: Data, _ rhs:Data) -> Bool {
         guard lhs.count == rhs.count else {return false}
         var difference = UInt8(0x00)
