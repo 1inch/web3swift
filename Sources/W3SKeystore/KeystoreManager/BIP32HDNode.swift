@@ -114,6 +114,12 @@ public class HDNode {
         childNumber = UInt32(0)
     }
     
+    public convenience init?(mnemonics: String, mnemonicsPassword: String = "", language: BIP39Language = .english) {
+        guard var seed = BIP39.seedFromMmemonics(mnemonics, password: mnemonicsPassword, language: language) else { return nil }
+        defer { Data.zero(&seed) }
+        self.init(seed: seed)
+    }
+    
     private static var curveOrder = BigUInt("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", radix: 16)!
     public static var defaultPath: String = "m/44'/60'/0'/0"
     public static var defaultPathPrefix: String = "m/44'/60'/0'"

@@ -237,4 +237,21 @@ class web3swift_Keystores_tests: XCTestCase {
         let _ = try! EthereumKeystoreV3(privateKey: privateKey, password: "TEST")!
     }
     
+    func testCustomDerivationPath() {
+        let mnemonics = "chat jar inject slogan nephew rookie champion group govern hotel salad expand"
+        let rootNode = HDNode(mnemonics: mnemonics)
+        XCTAssertNotNil(rootNode)
+        let path = "m/44'/60'/0'/0/5"
+        let keystore = try! BIP32Keystore(rootNode: rootNode!, derivationPath: path, password: "")
+        XCTAssertNotNil(keystore)
+        XCTAssert(keystore!.addressStorage.addresses[0].hex(eip55: true) == "0xcB54bFdFe10f1Add30344e07101FfE8DcDa8e498")
+        let privateKeyData = try! keystore!.UNSAFE_getPrivateKeyData(password: "", account: keystore!.addressStorage.addresses[0])
+        XCTAssert(privateKeyData.toHexString() == "cf86a53a6f2133f2b451d626a43ea342c650155a90d8cfc2879d73aced7465a9")
+        
+        try! keystore!.createNewChildAccount(password: "")
+        XCTAssert(keystore!.addressStorage.addresses.count == 2)
+        XCTAssert(keystore!.addressStorage.paths.count == 2)
+        XCTAssert(keystore!.addressStorage.paths[1] == "m/44'/60'/0'/0/6")
+        XCTAssert(keystore!.addressStorage.addresses[1].hex(eip55: true) == "0x16d45F201EA20de209E6cD42BB826FC21F09bfe1")
+    }
 }

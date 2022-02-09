@@ -72,6 +72,23 @@ public class BIP32Keystore: AbstractKeystore {
         try self.init(seed: seed, password: password, prefixPath: prefixPath, aesMode: aesMode)
     }
     
+    public init? (rootNode: HDNode, derivationPath: String, password: String = "web3swift", aesMode: String = "aes-128-cbc") throws {
+        addressStorage = PathAddressStorage()
+        
+        guard let newNode = rootNode.derive(path: derivationPath, derivePrivateKey: true) else { return nil }
+        
+        var pathComponents = derivationPath.components(separatedBy: "/")
+        pathComponents.removeLast()
+        self.rootPrefix = pathComponents.joined(separator: "/")
+        guard let parentNode = rootNode.derive(path: self.rootPrefix, derivePrivateKey: true) else { return nil }
+        
+        guard let newAddress = Utils.publicToAddress(newNode.publicKey) else {throw AbstractKeystoreError.keyDerivationError}
+        addressStorage.add(address: newAddress, for: derivationPath)
+        
+        guard let serializedParentNode = parentNode.serialize(serializePublic: false) else {throw AbstractKeystoreError.keyDerivationError}
+        try encryptDataToStorage(password, data: serializedParentNode, aesMode: aesMode)
+    }
+    
     public init? (seed: Data, password: String = "web3swift", prefixPath: String = HDNode.defaultPathMetamaskPrefix, aesMode: String = "aes-128-cbc") throws {
         addressStorage = PathAddressStorage()
         guard let rootNode = HDNode(seed: seed)?.derive(path: prefixPath, derivePrivateKey: true) else {return nil}
