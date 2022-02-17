@@ -289,4 +289,8 @@ public class BIP32Keystore: AbstractKeystore {
         guard let string = rootNode.serializeToString(serializePublic: false) else {throw AbstractKeystoreError.encryptionError("Failed to deserialize a root node")}
         return string
     }
+    
+    public func path(by address: EthereumAddress) -> String? {
+        addressStorage.path(by: address)
+    }
 }
