@@ -1,24 +1,24 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.6
 
 import PackageDescription
 
 let package = Package(
     name: "W3SKeystore",
     platforms: [
-        .iOS(.v12),
-        .macOS(.v10_13),
+        .iOS(.v13),
+        .macOS(.v10_15),
     ],
     products: [
         .library(name: "W3SKeystore", targets: ["W3SKeystore"]),
     ],
     dependencies: [
-        .package(name: "Web3", url: "https://github.com/1inch/Web3.swift.git", from: "0.6.11"),
+        .package(url: "https://github.com/1inch/Web3.swift.git", from: "0.6.14"),
     ],
     targets: [
         .target(
             name: "W3SKeystore",
             dependencies: [
-                .product(name: "Web3", package: "Web3"),
+                .product(name: "Web3", package: "Web3.swift"),
             ]
         ),
         .testTarget(

@@ -1,52 +1,50 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "BigInt",
-        "repositoryURL": "https://github.com/attaswift/BigInt.git",
-        "state": {
-          "branch": null,
-          "revision": "0ed110f7555c34ff468e72e1686e59721f2b0da6",
-          "version": "5.3.0"
-        }
-      },
-      {
-        "package": "CryptoSwift",
-        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "8d4f6384e0a8cc41f2005247241dd553963a492a",
-          "version": "1.4.1"
-        }
-      },
-      {
-        "package": "PromiseKit",
-        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
-        "state": {
-          "branch": null,
-          "revision": "d2f7ba14bcdc45e18f4f60ad9df883fb9055f081",
-          "version": "6.15.3"
-        }
-      },
-      {
-        "package": "secp256k1",
-        "repositoryURL": "https://github.com/1inch/secp256k1.swift",
-        "state": {
-          "branch": null,
-          "revision": "487bcb576091865d56e96da9bbe8dd790958b82e",
-          "version": "0.2.1"
-        }
-      },
-      {
-        "package": "Web3",
-        "repositoryURL": "https://github.com/1inch/Web3.swift.git",
-        "state": {
-          "branch": null,
-          "revision": "fa7a1163718ca51890a541b842277cffada53fc9",
-          "version": "0.6.11"
-        }
+  "pins" : [
+    {
+      "identity" : "bigint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/attaswift/BigInt.git",
+      "state" : {
+        "revision" : "0ed110f7555c34ff468e72e1686e59721f2b0da6",
+        "version" : "5.3.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "8d4f6384e0a8cc41f2005247241dd553963a492a",
+        "version" : "1.4.1"
+      }
+    },
+    {
+      "identity" : "promisekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/PromiseKit.git",
+      "state" : {
+        "revision" : "d2f7ba14bcdc45e18f4f60ad9df883fb9055f081",
+        "version" : "6.15.3"
+      }
+    },
+    {
+      "identity" : "secp256k1.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/1inch/secp256k1.swift",
+      "state" : {
+        "revision" : "9e4c9d457803b60dcd4e06043ca8bd149d05f5c6",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "web3.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/1inch/Web3.swift.git",
+      "state" : {
+        "revision" : "60a775ba201c4d3f106969553a2dffe8eed5c8e0",
+        "version" : "0.6.14"
+      }
+    }
+  ],
+  "version" : 2
 }
