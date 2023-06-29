@@ -1,18 +1,18 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.8
 
 import PackageDescription
 
 let package = Package(
     name: "W3SKeystore",
     platforms: [
-        .iOS(.v13),
-        .macOS(.v10_15),
+        .iOS(.v15),
+        .macOS(.v12),
     ],
     products: [
         .library(name: "W3SKeystore", targets: ["W3SKeystore"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/1inch/Web3.swift.git", from: "0.6.14"),
+        .package(url: "https://github.com/1inch/Web3.swift.git", from: "0.6.19"),
     ],
     targets: [
         .target(
