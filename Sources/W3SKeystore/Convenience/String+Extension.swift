@@ -25,6 +25,22 @@ public extension String {
         }
         return self
     }
+    
+    func splitParentPath(depth: Int) -> (String, String)? {
+        let components = self.components(separatedBy: "/")
+        guard !components.isEmpty else {
+            return nil
+        }
+        let parentCount = depth + 1  // Including m
+        guard components.count >= parentCount else {
+            return nil
+        }
+        
+        let parentPath = components.dropLast(components.count - parentCount).joined(separator: "/")
+        let childPath = components.dropFirst(parentCount).joined(separator: "/")
+        
+        return (parentPath, childPath)
+    }
 }
 
 extension String {

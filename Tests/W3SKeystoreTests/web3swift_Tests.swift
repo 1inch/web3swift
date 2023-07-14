@@ -55,5 +55,15 @@ class web3swift_Tests: XCTestCase {
         let addressString = address.hex(eip55: true)
         XCTAssertEqual(addressString, "0x1d23118D0Dd260547610b5326C2E62bE7F5f6fAa")
     }
+    
+    func testDerivationPathSplit() throws {
+        let pathes1 = "m/44'/60'/0'/0/5".splitParentPath(depth: 3)
+        XCTAssertNotNil(pathes1)
+        XCTAssertEqual(pathes1!.0, "m/44'/60'/0'")
+        XCTAssertEqual(pathes1!.1, "0/5")
+        
+        let pathes2 = "m/44'/60'/0'/0/5".splitParentPath(depth: 8)
+        XCTAssertNil(pathes2)
+    }
 }
 
