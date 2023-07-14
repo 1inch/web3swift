@@ -59,7 +59,7 @@ public class HDNode {
         }
     }
     
-    init() {
+    public init() {
         publicKey = Data()
         chaincode = Data()
         depth = UInt8(0)
