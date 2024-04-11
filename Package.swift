@@ -12,13 +12,13 @@ let package = Package(
         .library(name: "W3SKeystore", targets: ["W3SKeystore"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/1inch/Web3.swift.git", from: "0.6.19"),
+        .package(url: "https://github.com/1inch/NewWeb3.swift", from: "0.8.7-1-oi"),
     ],
     targets: [
         .target(
             name: "W3SKeystore",
             dependencies: [
-                .product(name: "Web3", package: "Web3.swift"),
+                .product(name: "Web3", package: "NewWeb3.swift"),
             ]
         ),
         .testTarget(

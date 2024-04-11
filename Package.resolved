@@ -19,21 +19,21 @@
       }
     },
     {
-      "identity" : "promisekit",
+      "identity" : "newweb3.swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mxcl/PromiseKit.git",
+      "location" : "https://github.com/1inch/NewWeb3.swift",
       "state" : {
-        "revision" : "8a98e31a47854d3180882c8068cc4d9381bf382d",
-        "version" : "6.22.1"
+        "revision" : "5bad70f1ce7f1f37b215e7bd0cfd588235b7c69e",
+        "version" : "0.8.7-1-oi"
       }
     },
     {
       "identity" : "secp256k1.swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Boilertalk/secp256k1.swift.git",
+      "location" : "https://github.com/1inch/secp256k1.swift",
       "state" : {
-        "revision" : "cd187c632fb812fd93711a9f7e644adb7e5f97f0",
-        "version" : "0.1.7"
+        "revision" : "9e4c9d457803b60dcd4e06043ca8bd149d05f5c6",
+        "version" : "0.2.2"
       }
     },
     {
@@ -88,15 +88,6 @@
       "state" : {
         "revision" : "41f4098903878418537020075a4d8a6e20a0b182",
         "version" : "1.17.0"
-      }
-    },
-    {
-      "identity" : "web3.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/1inch/Web3.swift.git",
-      "state" : {
-        "revision" : "4647a88ef5a85d92963512e0f7ebc78a66b6d850",
-        "version" : "0.8.3"
       }
     },
     {
