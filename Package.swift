@@ -12,7 +12,7 @@ let package = Package(
         .library(name: "W3SKeystore", targets: ["W3SKeystore"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/1inch/NewWeb3.swift", from: "0.8.7-1-oi"),
+        .package(url: "https://github.com/1inch/NewWeb3.swift", from: "0.8.8-oi.7"),
     ],
     targets: [
         .target(
