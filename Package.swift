@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "W3SKeystore",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
+        .iOS(.v16),
+        .macOS(.v13),
     ],
     products: [
         .library(name: "W3SKeystore", targets: ["W3SKeystore"]),
