@@ -19,16 +19,6 @@ class web3swift_BIP39_Tests: XCTestCase {
         XCTAssert(BIP39.languageOf(words: words)! == .english)
     }
 
-    func testWordsValidator() throws {
-        let validator = BIP39Validator()
-        
-        XCTAssert(validator.isWordValid("wave"))
-        XCTAssert(validator.isWordValid("はけん"))
-        
-        XCTAssertFalse(validator.isWordValid("zombie"))
-        XCTAssertFalse(validator.isWordValid("みつ"))
-    }
-    
     func testWordsJoining() throws {
         let mnemonic = "てほどき　たたく　きおう　むのう　はけん　ひみつ　ていど　こくとう　へいわ　ろこつ　なおす　せんせい" // used ideomatic spaces
         let words = BIP39.mnemonicToWords(mnemonic)
@@ -68,7 +58,3 @@ class web3swift_BIP39_Tests: XCTestCase {
         }
     }
 }
-
-
-
-

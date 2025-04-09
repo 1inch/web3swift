@@ -6,43 +6,6 @@
 
 import Foundation
 
-public extension String {
-    func hasHexPrefix() -> Bool {
-        return self.hasPrefix("0x")
-    }
-    
-    func stripHexPrefix() -> String {
-        if self.hasPrefix("0x") {
-            let indexStart = self.index(self.startIndex, offsetBy: 2)
-            return String(self[indexStart...])
-        }
-        return self
-    }
-    
-    func addHexPrefix() -> String {
-        if !self.hasPrefix("0x") {
-            return "0x" + self
-        }
-        return self
-    }
-    
-    func splitParentPath(depth: Int) -> (String, String)? {
-        let components = self.components(separatedBy: "/")
-        guard !components.isEmpty else {
-            return nil
-        }
-        let parentCount = depth + 1  // Including m
-        guard components.count >= parentCount else {
-            return nil
-        }
-        
-        let parentPath = components.dropLast(components.count - parentCount).joined(separator: "/")
-        let childPath = components.dropFirst(parentCount).joined(separator: "/")
-        
-        return (parentPath, childPath)
-    }
-}
-
 extension String {
     func split(intoChunksOf chunkSize: Int) -> [String] {
         var output = [String]()

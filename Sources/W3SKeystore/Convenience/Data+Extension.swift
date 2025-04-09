@@ -6,52 +6,7 @@
 
 import Foundation
 
-public extension Data {
-    
-    init<T>(fromArray values: [T]) {
-        self = values.withUnsafeBytes { Data($0) }
-    }
-
-    func toArray<T>(type: T.Type) -> [T] where T: ExpressibleByIntegerLiteral {
-        var array = Array<T>(repeating: 0, count: self.count/MemoryLayout<T>.stride)
-        _ = array.withUnsafeMutableBytes { copyBytes(to: $0) }
-        return array
-    }
-    
-    //    func toArray<T>(type: T.Type) throws -> [T] {
-    //        return try self.withUnsafeBytes { (body: UnsafeRawBufferPointer) in
-    //            if let bodyAddress = body.baseAddress, body.count > 0 {
-    //                let pointer = bodyAddress.assumingMemoryBound(to: T.self)
-    //                return [T](UnsafeBufferPointer(start: pointer, count: self.count/MemoryLayout<T>.stride))
-    //            } else {
-    //                throw Web3Error.dataError
-    //            }
-    //        }
-    //    }
-    
-    func constantTimeComparisonTo(_ other:Data?) -> Bool {
-        guard let rhs = other else {return false}
-        guard self.count == rhs.count else {return false}
-        var difference = UInt8(0x00)
-        for i in 0..<self.count { // compare full length
-            difference |= self[i] ^ rhs[i] //constant time
-        }
-        return difference == UInt8(0x00)
-    }
-    
-    static func zero(_ data: inout Data) {
-        let count = data.count
-        data.withUnsafeMutableBytes { (body: UnsafeMutableRawBufferPointer) in
-            body.baseAddress?.assumingMemoryBound(to: UInt8.self).initialize(repeating: 0, count: count)
-        }
-    }
-    
-    //    static func zero(_ data: inout Data) {
-    //        let count = data.count
-    //        data.withUnsafeMutableBytes { (body: UnsafeMutableRawBufferPointer) in
-    //            body.baseAddress?.assumingMemoryBound(to: UInt8.self).initialize(repeating: 0, count: count)
-    //        }
-    //    }
+extension Data {
     
     static func randomBytes(length: Int) -> Data? {
         for _ in 0...1024 {
@@ -88,19 +43,6 @@ public extension Data {
     //        }
     //        return nil
     //    }
-    
-    static func fromHex(_ hex: String) -> Data? {
-        let string = hex.lowercased().stripHexPrefix()
-        let array = Array<UInt8>(hex: string)
-        if (array.count == 0) {
-            if (hex == "0x" || hex == "") {
-                return Data()
-            } else {
-                return nil
-            }
-        }
-        return Data(array)
-    }
     
     func bitsInRange(_ startingBit:Int, _ length:Int) -> UInt64? { //return max of 8 bytes for simplicity, non-public
         if startingBit + length / 8 > self.count, length > 64, startingBit > 0, length >= 1 {return nil}
