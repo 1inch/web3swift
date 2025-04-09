@@ -71,6 +71,10 @@ public enum BIP39Language: CaseIterable {
 
 public class BIP39 {
     
+    enum Error: Swift.Error {
+        case noEntropyError
+    }
+    
     static public func generateMnemonicsFromEntropy(entropy: Data, language: BIP39Language = BIP39Language.english) -> String?  {
         guard entropy.count >= 16, entropy.count & 4 == 0 else {return nil}
         let checksum = entropy.sha256()
@@ -106,7 +110,7 @@ public class BIP39 {
     ///   - language: words language, default english
     static public func generateMnemonics(bitsOfEntropy: Int, language: BIP39Language = BIP39Language.english) throws -> String? {
         guard bitsOfEntropy >= 128 && bitsOfEntropy <= 256 && bitsOfEntropy.isMultiple(of: 32) else {return nil}
-        guard let entropy = Data.randomBytes(length: bitsOfEntropy/8) else {throw AbstractKeystoreError.noEntropyError}
+        guard let entropy = Data.randomBytes(length: bitsOfEntropy/8) else {throw Error.noEntropyError}
         return BIP39.generateMnemonicsFromEntropy(entropy: entropy, language: language)
         
     }
